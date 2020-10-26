@@ -1,0 +1,36 @@
+<%= form_with(model: tree, local: true) do |form| %>
+  <% if tree.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tree.errors.count, "error") %> prohibited this tree from being saved:</h2>
+
+      <ul>
+        <% tree.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weathers %>
+    <%= form.collection_check_boxes(:weather_ids, Weather.all, :id, :name) do |b| %>
+      <%= b.label class: "checkbox" do %>
+        <%= b.check_box + b.text %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

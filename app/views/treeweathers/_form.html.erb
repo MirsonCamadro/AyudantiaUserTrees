@@ -1,0 +1,27 @@
+<%= form_with(model: treeweather, local: true) do |form| %>
+  <% if treeweather.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(treeweather.errors.count, "error") %> prohibited this treeweather from being saved:</h2>
+
+      <ul>
+        <% treeweather.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tree_id %>
+    <%= form.text_field :tree_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weather_id %>
+    <%= form.text_field :weather_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tree:</strong>
+  <%= @treeweather.tree_id %>
+</p>
+
+<p>
+  <strong>Weather:</strong>
+  <%= @treeweather.weather_id %>
+</p>
+
+<%= link_to 'Edit', edit_treeweather_path(@treeweather) %> |
+<%= link_to 'Back', treeweathers_path %>

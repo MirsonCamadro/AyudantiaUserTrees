@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tree.name %>
+</p>
+
+<% @tree.images.each do |img| %>
+  <%= image_tag img, size: "200x200"%>
+<% end %>
+
+  <div class="row">
+      <%= form_with(url: post_path(@tree), local: true) do |f| %>
+          <%= f.hidden_field :class, value: @tree.class %>
+          <%= f.text_field :content , placeholder: 'ingresa tu post'%>
+          <%= f.submit 'comentar'%>
+      <% end %>
+      <% @tree.posts.each do |post| %>
+          <%= post.content %>
+      <% end %>
+  </div>
+
+<%= link_to 'Edit', edit_tree_path(@tree) %> |
+<%= link_to 'Back', trees_path %>

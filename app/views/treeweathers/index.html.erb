@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Treeweathers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tree</th>
+      <th>Weather</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @treeweathers.each do |treeweather| %>
+      <tr>
+        <td><%= treeweather.tree_id %></td>
+        <td><%= treeweather.weather_id %></td>
+        <td><%= link_to 'Show', treeweather %></td>
+        <td><%= link_to 'Edit', edit_treeweather_path(treeweather) %></td>
+        <td><%= link_to 'Destroy', treeweather, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Treeweather', new_treeweather_path %>

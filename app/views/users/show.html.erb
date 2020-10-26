@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h2><%= @user.name%></h2>
+            <div>
+                <% if @user.avatar.attached? %>
+                    <%= image_tag @user.avatar, size: "200x200"%>
+                <% else %>
+                    imagen random
+                <% end %>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="row">
+                <% @trees.each do |tree| %>
+                    <%= tree.name %>
+                    <%= link_to "aporta ahora!", create_contribution_path(tree), method: :post %>
+                <% end %>
+            </div>
+            <div class="row">
+                <%= form_with(url: post_path(@user), local: true) do |f| %>
+                    <%= f.hidden_field :class, value: @user.class %>
+                    <%= f.text_field :content , placeholder: 'ingresa tu post'%>
+                    <%= f.submit 'comentar'%>
+                <% end %>
+
+                <% @user.posts.each do |post| %>
+                    <%= post.content %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
